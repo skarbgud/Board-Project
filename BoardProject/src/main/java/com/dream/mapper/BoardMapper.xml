@@ -10,7 +10,7 @@
 		<result property="regDate" column="regDate"/>
 	</resultMap>
 	
-	<select id="getBoardList" resultMap="BoardMap">
+	<select id="getBoardList" resultMap="boardMap">
 		SELECT * FROM BOARD
 	</select>
 
