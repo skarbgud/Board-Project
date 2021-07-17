@@ -22,7 +22,9 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.dream.controller" />
-	
+	<context:component-scan base-package="com.dream.service" />
+	<context:component-scan base-package="com.dream.mapper" />
+	<context:component-scan base-package="com.dream.vo" />
 	
 	
 </beans:beans>
