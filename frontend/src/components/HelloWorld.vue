@@ -1,11 +1,18 @@
 <template>
-  <div class="hello">
-    {{ boardList }}
+  <div>
+    <el-table border :data="boardList">
+      <el-table-column prop="bno" label="글번호"></el-table-column>
+      <el-table-column prop="title" label="제목"></el-table-column>
+      <el-table-column prop="content" label="내용"></el-table-column>
+      <el-table-column prop="writer" label="작성자"> </el-table-column>
+      <el-table-column prop="regDate" label="등록일" :formatter="DateFormat"></el-table-column>
+    </el-table>
   </div>
 </template>
 
 <script>
 import axios from 'axios';
+import moment from 'moment';
 
 export default {
   name: 'HelloWorld',
@@ -21,12 +28,14 @@ export default {
     this.getBoardList();
   },
   methods: {
+    DateFormat(row) {
+      return moment(row.regDate).format('YYYY-MM-DD hh:MM:ss');
+    },
     getBoardList() {
       axios
         .get('http://localhost:8080/board/get-board-list.do')
         .then((response) => {
           if (response.data.success) {
-            console.log(response.data.result);
             this.boardList = response.data.result;
           }
         })
@@ -38,20 +47,4 @@ export default {
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
-</style>
+<style scoped></style>

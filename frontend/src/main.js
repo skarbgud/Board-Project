@@ -1,5 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
+import VueMoment from 'vue-moment'
+
+Vue.use(VueMoment);
+Vue.use(ElementUI);
+
 
 Vue.config.productionTip = false
 
