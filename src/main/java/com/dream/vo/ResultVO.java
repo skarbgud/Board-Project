@@ -10,7 +10,7 @@ public class ResultVO {
 	
 	// 생성자
 	public ResultVO(boolean success, Object result) {
-		this.result = result;
-		this.success = false;
+		setResult(result);
+		setSuccess(success);
 	}
 }
