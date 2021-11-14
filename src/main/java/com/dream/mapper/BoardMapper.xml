@@ -13,5 +13,11 @@
 	<select id="getBoardList" resultMap="boardMap">
 		SELECT * FROM BOARD
 	</select>
+	
+	<insert id="registBoard">
+		INSERT INTO BOARD
+			(title, content, writer, regDate)
+			VALUES (#{title}, #{content}, #{writer}, #{regDate})
+	</insert>
 
 </mapper>

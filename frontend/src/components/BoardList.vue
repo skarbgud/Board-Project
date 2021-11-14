@@ -15,14 +15,11 @@ import axios from 'axios';
 import moment from 'moment';
 
 export default {
-  name: 'HelloWorld',
+  name: 'BoardList',
   data() {
     return {
       boardList: [],
     };
-  },
-  props: {
-    msg: String,
   },
   created() {
     this.getBoardList();

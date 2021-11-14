@@ -1,7 +1,9 @@
 package com.dream.service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -31,6 +33,22 @@ public class BoardService implements BoardServiceIF {
 			e.printStackTrace();
 		}
 		return boardList;
+	}
+
+	public void registBoard(BoardVO vo) {
+		// TODO Auto-generated method stub
+		
+		vo.setRegDate(new Date());
+		vo.setWriter("user");
+		
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+
+			mapper.registBoard(vo);
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 	}
 
 }

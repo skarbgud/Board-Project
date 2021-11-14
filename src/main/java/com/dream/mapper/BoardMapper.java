@@ -10,5 +10,7 @@ import com.dream.vo.BoardVO;
 public interface BoardMapper {
 
 	public List<BoardVO> getBoardList();
+
+	public void registBoard(BoardVO vo);
 	
 }
