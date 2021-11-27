@@ -57,7 +57,7 @@ public class BoardController {
 		ResultVO result = new ResultVO(false, null);
 
 		try {
-			service.registBoard(vo);
+			result.setResult(service.registBoard(vo));
 			result.setSuccess(true);
 		} catch (Exception e) {
 			// TODO: handle exception

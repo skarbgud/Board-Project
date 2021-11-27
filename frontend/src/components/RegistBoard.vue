@@ -49,8 +49,14 @@ export default {
       axios
         .post('http://localhost:8080/board/regist-board.do', this.setParams)
         .then((response) => {
-          if (response.data.success) {
-            console.log(response);
+          if (response.data.success || response.data.result) {
+            // 창의 화면 변수 false로 창 닫기
+            this.openPopup = false;
+            // 입력되어 있는 변수들의 값을 초기화
+            this.title = '';
+            this.content = '';
+            // 목록을 재로딩을 위해 이벤트 emit
+            this.$emit('reload');
           }
         })
         .catch(function(error) {

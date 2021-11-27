@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <regist-board></regist-board>
-    <board-list></board-list>
+    <regist-board @reload="reload"></regist-board>
+    <board-list ref="list"></board-list>
   </div>
 </template>
 
@@ -14,6 +14,11 @@ export default {
   components: {
     RegistBoard,
     BoardList,
+  },
+  methods: {
+    reload() {
+      this.$refs.list.getBoardList();
+    },
   },
 };
 </script>

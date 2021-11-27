@@ -35,20 +35,36 @@ public class BoardService implements BoardServiceIF {
 		return boardList;
 	}
 
-	public void registBoard(BoardVO vo) {
+	public Boolean registBoard(BoardVO vo) {
 		// TODO Auto-generated method stub
 		
 		vo.setRegDate(new Date());
 		vo.setWriter("user");
 		
+		boolean result = false;
+		
 		try (SqlSession session = sqlSessionFactory.openSession()) {
 			BoardMapper mapper = session.getMapper(BoardMapper.class);
 
-			mapper.registBoard(vo);
+			// 매퍼의 결과를 담을 변수
+			int mapperResult = 0;
+			
+			// 성공시 1이 반환됩니다.
+			mapperResult = mapper.registBoard(vo);
+			
+			//정상 동작시 return 값을 true
+			if (mapperResult > 0) {
+				result = true;
+			}
+			//정상 동작이 아닐 시 return 값을 false
+			else {
+				result = false;
+			}
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
 		}
+	
+		return result;
 	}
-
 }
