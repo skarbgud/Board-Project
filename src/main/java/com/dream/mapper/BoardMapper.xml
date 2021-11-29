@@ -19,5 +19,9 @@
 			(title, content, writer, regDate)
 			VALUES (#{title}, #{content}, #{writer}, #{regDate})
 	</insert>
+	
+	<select id="getBoardDetail" resultMap="boardMap">
+		SELECT * FROM BOARD WHERE bno = #{bno}
+	</select>
 
 </mapper>

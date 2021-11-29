@@ -67,4 +67,20 @@ public class BoardService implements BoardServiceIF {
 	
 		return result;
 	}
+
+	public BoardVO getBoardDetail(BoardVO vo) {
+		// TODO Auto-generated method stub
+		BoardVO board = new BoardVO();
+
+		try (SqlSession session = sqlSessionFactory.openSession()) {
+			BoardMapper mapper = session.getMapper(BoardMapper.class);
+
+			board = mapper.getBoardDetail(vo.getBno());
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return board;
+	}
 }
