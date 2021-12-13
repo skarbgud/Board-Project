@@ -15,4 +15,5 @@ public interface BoardMapper {
 
 	public BoardVO getBoardDetail(int bno);
 	
+	public int editBoard(BoardVO vo);
 }

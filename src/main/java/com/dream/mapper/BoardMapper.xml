@@ -23,5 +23,11 @@
 	<select id="getBoardDetail" resultMap="boardMap">
 		SELECT * FROM BOARD WHERE bno = #{bno}
 	</select>
+	
+	<update id="editBoard">
+		UPDATE BOARD 
+			SET title = #{title}, content = #{content}, writer = #{writer}, regDate = #{regDate}
+			WHERE BNO = #{bno}
+	</update>
 
 </mapper>

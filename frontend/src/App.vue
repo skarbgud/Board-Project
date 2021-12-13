@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <regist-board @reload="reload"></regist-board>
+    <!-- 글쓰기 버튼 -->
+    <el-button type="danger" @click="openRegistPopup()">글쓰기</el-button>
+    <regist-board @reload="reload" ref="registPopup"></regist-board>
     <board-list ref="list"></board-list>
   </div>
 </template>
@@ -19,6 +21,9 @@ export default {
     reload() {
       this.$refs.list.getBoardList();
     },
+    openRegistPopup() {
+      this.$refs.registPopup.openPopup = true;
+    }
   },
 };
 </script>
