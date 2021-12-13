@@ -110,4 +110,25 @@ public class BoardController {
 		return result;
 
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "delete-board.do", method = RequestMethod.POST)
+	public ResultVO deleteBoard(@RequestBody BoardVO vo) 
+	{	
+		// 호출 시 찍히게 될 로그
+		LOG.info("[POST] deleteBoard");
+		// 결과 값을 담을 ResultVO를 선언한 생성자를 통해서 만드는데 기본값은 success는 false, result는 null로 세팅
+		ResultVO result = new ResultVO(false, null);
+
+		try {
+			result.setResult(service.deleteBoard(vo));
+			result.setSuccess(true);
+		} catch (Exception e) {
+			// TODO: handle exception
+			LOG.error("[Board] deleteBoard : " + e.getMessage(), e);
+		}
+
+		return result;
+
+	}
 }

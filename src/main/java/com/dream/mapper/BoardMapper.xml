@@ -29,5 +29,10 @@
 			SET title = #{title}, content = #{content}, writer = #{writer}, regDate = #{regDate}
 			WHERE BNO = #{bno}
 	</update>
+	
+	<delete id="deleteBoard">
+		DELETE FROM BOARD 
+		WHERE BNO = #{bno}
+	</delete>
 
 </mapper>

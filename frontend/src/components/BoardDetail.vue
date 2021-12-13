@@ -9,6 +9,7 @@
       작성자 : {{ boardDetail.writer }} <br>
       <el-row type="flex" justify="end" style="margin-top:30px;">
         <el-button type="primary" @click="clcikEditButton()">수정</el-button>
+        <el-button type="danger" @click="clcikDeleteButton()">삭제</el-button>
       </el-row>
     </el-dialog>
     <regist-board @reload="reload" ref="registPopup"></regist-board>
@@ -61,6 +62,22 @@ export default {
       this.$refs.registPopup.content = this.boardDetail.content;
       this.$refs.registPopup.editMode = true;
       this.$refs.registPopup.openPopup = true;
+    },
+    clcikDeleteButton () {
+      const params = {
+        bno: this.boardDetail.bno,
+      };
+      axios
+        .post('http://localhost:8080/board/delete-board.do', params)
+        .then((response) => {
+          if (response.data.success) {
+            this.openDetail = false;
+            this.reload();
+          }
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
     },
     reload() {
       // 목록을 재로딩을 위해 이벤트 emit
