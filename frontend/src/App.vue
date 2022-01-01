@@ -4,18 +4,21 @@
     <el-button type="danger" @click="openRegistPopup()">글쓰기</el-button>
     <regist-board @reload="reload" ref="registPopup"></regist-board>
     <board-list ref="list"></board-list>
+    <text-file></text-file>
   </div>
 </template>
 
 <script>
 import RegistBoard from './components/RegistBoard.vue';
 import BoardList from './components/BoardList.vue';
+import TextFile from './components/TextFile.vue';
 
 export default {
   name: 'App',
   components: {
     RegistBoard,
     BoardList,
+    TextFile,
   },
   methods: {
     reload() {
